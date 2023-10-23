@@ -21,11 +21,6 @@ function App() {
             .then(response => response.json())
             .then(json => {
                 setWeather(json);
-                if(json.cod === '404') {
-                    container.current.style = 'height:400px;';
-                }else {
-                    container.current.style = 'height:590px;';
-                }
             })
     }
 
@@ -39,7 +34,7 @@ function App() {
         </SearchBox>
 
         {
-            weather === ""? null : weather.cod === "404" ? <NotFoundPage /> : <WeatherBox weather={weather}/>
+            weather === ""? null : weather.cod === "404" ? <NotFoundPage container={container} /> : <WeatherBox weather={weather} container={container}/>
         }
 
     </div>
