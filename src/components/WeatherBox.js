@@ -10,13 +10,9 @@ import snow from "../assets/snow.png";
 
 function WeatherBox({weather, container}) {
     const [imagePath, setImagePath] = useState("");
-    const weatherBox =useRef();
-    const weatherDetail = useRef();
 
     useEffect(() => {
         container.current.style = 'height:590px;'
-        weatherBox.current.style = '';
-        weatherDetail.current.style = '';
         const currentWhether = weather.weather[0].main;
 
         switch (currentWhether) {
@@ -47,13 +43,13 @@ function WeatherBox({weather, container}) {
 
     return (
         <>
-            <div className="weather-box fadeIn" ref={weatherBox}>
+            <div className="weather-box fadeIn">
                 <img src={imagePath} />
                     <p className="temperature">{weather.main.temp}</p>
                     <p className="description">{weather.weather[0].description}</p>
             </div>
 
-            <div className="weather-details fadeIn" ref={weatherDetail}>
+            <div className="weather-details fadeIn">
                 <div className="humidity">
                     <i className="fa-solid fa-water"></i>
                     <div className="text">
